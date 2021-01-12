@@ -54,11 +54,6 @@ kind: Ingress
 metadata:
   name: minecraft-ingress
   namespace: minecraft
-  annotations:
-    kubernetes.io/ingress.class: alb
-    external-dns.alpha.kubernetes.io/hostname: shazzserver.devops.hg-prototypes.com
-    alb.ingress.kubernetes.io/scheme: internet-facing
-    alb.ingress.kubernetes.io/target-type: ip
 spec:
   rules:
   - http:
