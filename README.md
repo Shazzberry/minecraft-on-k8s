@@ -1,5 +1,5 @@
 # minecraft-on-k8s
-This is a WIP project where I built an MC server on Kubernetes
+This is a WIP project where I built an MC server running https://feed-the-beast.com/modpack/ftb_presents_direwolf20_1_16 on Kubernetes
 
 
 # Dependancies
