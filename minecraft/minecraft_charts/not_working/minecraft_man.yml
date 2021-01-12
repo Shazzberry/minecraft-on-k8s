@@ -178,43 +178,6 @@ minecraftServer:
     ## Set the externalTrafficPolicy in the Service to either Cluster or Local
     # externalTrafficPolicy: Cluster
 
-  # dynmap:
-  #   # Enabling any of these options will not install dynmap to your server, but
-  #   # opens up a service and possibly an ingress to access dynmap on your server.
-  #   # To install dynmap, see downloadModpackUrl
-
-  #   containerPort: 8123
-  #   service:
-  #     # Enable a service for dynmap
-  #     enabled: true
-  #     annotations: {}
-  #     type: ClusterIP
-  #     loadBalancerIP: ""
-  #     loadBalancerSourceRanges: []
-  #     # externalTrafficPolicy: Cluster
-  #     port: 8123
-  #   ingress:
-  #     enabled: true
-  #     annotations:
-  #       kubernetes.io/ingress.class: alb
-  #       alb.ingress.kubernetes.io/scheme: internet-facing
-  #       kubernetes.io/tls-acme: "true"
-  #       cert-manager.io/cluster-issuer: "letsencrypt-prod"
-  #       cert-manager.io/acme-challenge-type: http01
-  #       external-dns.alpha.kubernetes.io/hostname: shazzserver.devops.hg-prototypes.com
-  #     hosts:
-  #       - name: shazzserver.devops.hg-prototypes.com
-  #         path: /
-  #     tls:
-  #     - secretName: dynmap-tls
-  #       hosts:
-  #         - shazzserver.devops.hg-prototypes.com
-
-  # query:
-  #   # If you enable this, your server will be "published" to Gamespy
-  #   enabled: false
-  #   port: 25565
-
 ## Additional minecraft container environment variables
 ##
 extraEnv: {}
