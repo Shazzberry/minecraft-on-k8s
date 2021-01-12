@@ -5,6 +5,6 @@ metadata:
   namespace: minecraft
 subsets:
   - addresses:
-      - ip: 10.100.2.190
+      - ip: 
     ports:
       - port: 25565
