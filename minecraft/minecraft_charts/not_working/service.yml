@@ -3,8 +3,6 @@ kind: Service
 metadata:
   name: minecraft-svc
   namespace: minecraft
-  annotations:
-    external-dns.alpha.kubernetes.io/hostname: shazzserver.devops.hg-prototypes.com
 spec:
   type: LoadBalancer
   selector:
@@ -13,4 +11,4 @@ spec:
     - port: 80
       targetPort: 25565
       name: http
-  clusterIP: 172.20.33.165
+  clusterIP: 
