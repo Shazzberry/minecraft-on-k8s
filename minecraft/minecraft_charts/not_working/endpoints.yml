@@ -1,0 +1,10 @@
+apiVersion: v1
+kind: Endpoints
+metadata:
+  name: minecraft
+  namespace: minecraft
+subsets:
+  - addresses:
+      - ip: 10.100.2.190
+    ports:
+      - port: 25565
