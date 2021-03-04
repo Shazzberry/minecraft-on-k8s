@@ -1,12 +1,13 @@
 apiVersion: v1
 kind: PersistentVolumeClaim
 metadata:
-  name: minecraft-world
+  name: mc-data
+  namespace: minecraft
   labels:
-    app: minecraft
+    app: mc-ftba
 spec:
   accessModes:
-    - ReadWriteOnce
+    - ReadWriteMany
   resources:
     requests:
-      storage: 10Gi
+      storage: 30Gi

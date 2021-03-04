@@ -1,0 +1,126 @@
+---
+apiVersion: apps/v1
+kind: StatefulSet
+metadata:
+  labels:
+    app: mc-ftba
+  name: mc-ftba
+  namespace: minecraft
+spec:
+  replicas: 1
+  serviceName: mc-ftba
+  selector:
+    matchLabels:
+      app: mc-ftba
+  template:
+    metadata:
+      labels:
+        app: mc-ftba
+    spec:
+      containers:
+        - name: minecraft
+          image: itzg/minecraft-server:multiarch
+          imagePullPolicy: Always
+          env:
+            - name: EULA
+              value: "true"
+            - name: TYPE
+              value: "FTBA"
+            - name: FTB_MODPACK_ID
+              value: "79"
+            - name: FTB_LEGACYJAVAFIXER
+              value: "false"
+            - name: VERSION
+              value: "1.6.4"
+            - name: DIFFICULTY
+              value: "hard"
+            - name: WHITELIST
+              value: ""
+            - name: OPS
+              value: "shazzberry"
+            - name: ICON
+              value: ""
+            - name: MAX_PLAYERS
+              value: "20"
+            - name: MAX_WORLD_SIZE
+              value: "10000"
+            - name: ALLOW_NETHER
+              value: "true"
+            - name: ANNOUNCE_PLAYER_ACHIEVEMENTS
+              value: "true"
+            - name: ENABLE_COMMAND_BLOCK
+              value: "true"
+            - name: FORCE_GAMEMODE
+              value: "false"
+            - name: FORCE_REDOWNLOAD
+              value: "true"
+            - name: GENERATE_STRUCTURES
+              value: "true"
+            - name: HARDCORE
+              value: "false"
+            - name: MAX_BUILD_HEIGHT
+              value: "256"
+            - name: MAX_TICK_TIME
+              value: "60000"
+            - name: SPAWN_ANIMALS
+              value: "true"
+            - name: SPAWN_MONSTERS
+              value: "true"
+            - name: SPAWN_NPCS
+              value: "true"
+            - name: VIEW_DISTANCE
+              value: "7"
+            - name: SEED
+              value: ""
+            - name: MODE
+              value: "survival"
+            - name: MOTD
+              value: "Kubernetes Minecraft! The worst idea!"
+            - name: PVP
+              value: "true"
+            - name: LEVEL_TYPE
+              value: "DEFAULT"
+            - name: GENERATOR_SETTINGS
+              value: ""
+            - name: LEVEL
+              value: ""
+            - name: WORLD
+              value: ""
+            - name: MODPACK
+              value: ""
+            - name: REMOVE_OLD_MODS
+              value: "false"
+            - name: ONLINE_MODE
+              value: "true"
+            - name: MEMORY
+              value: "6000M"
+            - name: JVM_OPTS
+              value: ""
+            - name: JVM_XX_OPTS
+              value: ""
+          volumeMounts:
+            - mountPath: /data
+              name: data
+  volumeClaimTemplates:
+    - metadata:
+        name: data
+      spec:
+        accessModes:
+          - ReadWriteOnce
+        resources:
+          requests:
+            storage: 30Gi
+---
+apiVersion: v1
+kind: Service
+metadata:
+  labels:
+    service: mc-ftba
+  name: mc-ftba
+spec:
+  ports:
+    - port: 25565
+      targetPort: 25565
+  selector:
+    app: mc-ftba
+  type: LoadBalancer
