@@ -1,5 +1,5 @@
 # minecraft-on-k8s
-This is a WIP project where I built an MC server running https://feed-the-beast.com/modpack/ftb_presents_direwolf20_1_16 on Kubernetes
+This is a project where I built an MC server running https://feed-the-beast.com/modpack/ftb_presents_direwolf20_1_16 on Kubernetes
 
 So a quick explanation, you simply need to clone this down, `kubectl apply -f ./mc-ftba --namespace=minecraft` while connected to your cluster.
 
